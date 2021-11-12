@@ -1,24 +1,23 @@
-import uuid
-
-
 class Venta():
-    def __init__(self,empleado,cliente,listaCompra,listaCantidades,listaPrecios,total):
-        self.codigoVenta= uuid.uuid4()
-        self.empleado=  empleado
+    def __init__(self,cliente,empleado,nombreProducto,cantidadVenta,precioUnidad,precioTotal):
+        self.codigoVenta=None
         self.cliente= cliente
-        self.listaCompra= listaCompra
-        self.listaCantidades= listaCantidades
-        self.listaPrecios= listaPrecios
-        self.total= total
-
+        self.nombreProducto= nombreProducto
+        self.empleado= empleado
+        self.cantidadVenta= cantidadVenta
+        self.precioUnidad= precioUnidad
+        self.precioTotal= precioTotal
 
     def __repr__(self):
-        representacion= "El empleado que realizo la venta es :"+" "+self.empleado.nombre+"\n"+"" \
-                        "El cliente que realizo la compra es:"+" "+self.cliente.nombre+"\n"+""
-        for i in range(len(self.listaCompra)):
-                 representacion= representacion+"Producto:"+" "+str(self.listaCompra[i])+"\n"+"" \
-                 "Cantidad solicitada:"+" "+str(self.listaCantidades[i])+"\n"+""\
-                 "Valores:"+" "+str(self.listaPrecios[i])+"\n"+""
-
+        representacion= str(self.codigoVenta)+" "+"Venta realizada por el empleado:"+" "+self.empleado.nombre+"\n"\
+                        +"venta realiza al cliente:"+" "+self.cliente.nombre+" "+"con cedula: "+str(self.cliente.cedula)+"\n"\
+                        +"producto vendido: "+self.nombreProducto+" "+"cantidad: "+str(self.cantidadVenta)+"\n"\
+                        +"precio unidad: "+str(self.precioUnidad)+" "+"precio total: "+str(self.precioTotal)
         return representacion
 
+    def cumple(self, especificacion):
+        dict_venta = self.__dict__
+        for k in especificacion.get_keys():
+            if k not in dict_venta or dict_venta[k] != especificacion.get_value(k):
+                return False
+        return True

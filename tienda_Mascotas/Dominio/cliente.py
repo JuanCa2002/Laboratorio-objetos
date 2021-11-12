@@ -1,13 +1,16 @@
 import uuid
 from tienda_Mascotas.Dominio.persona import Persona
+
+
 class Cliente(Persona):
-    def __init__(self,codigoCliente,nombre,apellido,cedula,genero,direccion,correo,edad,tiempoCliente):
-        super().__init__(nombre,apellido,cedula,genero,direccion,correo,edad)
-        self.codigoCliente= codigoCliente
-        self.tiempoCliente= tiempoCliente
+    def __init__(self, codigoCliente, nombre, apellido, cedula, genero, direccion, correo, edad, tiempoCliente):
+        super().__init__(nombre, apellido, cedula, genero, direccion, correo, edad)
+        self.codigoCliente = codigoCliente
+        self.tiempoCliente = tiempoCliente
 
     def __repr__(self):
-        representacion= "Cliente:"+" "+str(self.nombre)+" "+str(self.apellido)+" "+"Identificado con cedula:"+" "+str(self.cedula)
+        representacion = "Cliente:" + " " + str(self.nombre) + " " + str(
+            self.apellido) + " " + "Identificado con cedula:" + " " + str(self.cedula)
         return representacion
 
     def cumple(self, especificacion):
@@ -17,7 +20,5 @@ class Cliente(Persona):
                 return False
         return True
 
-    def modificarTiempoCliente(self,nuevoTiempo):
-        self.tiempoCliente= nuevoTiempo
-
-
+    def modificarTiempoCliente(self, nuevoTiempo):
+        self.tiempoCliente = nuevoTiempo
